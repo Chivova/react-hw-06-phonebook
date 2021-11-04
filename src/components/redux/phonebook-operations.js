@@ -1,15 +1,15 @@
 import * as contactActions from './phonebook-actions';
-import fetchContacts from '../services/contacts-api';
+import * as contactsApi from '../services/contacts-api';
 
-const fetchPhonebook = () => async dispatch => {
+const contactsOperations = () => async dispatch => {
   dispatch(contactActions.fetchContactsRequest());
 
   try {
-    const contacts = await fetchContacts();
+    const contacts = await contactsApi.fetchContacts();
     dispatch(contactActions.fetchContactsSuccess(contacts));
   } catch (error) {
     dispatch(contactActions.fetchContactsError(error));
   }
 };
 
-export default fetchPhonebook;
+export default contactsOperations;
