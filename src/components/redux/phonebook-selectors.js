@@ -1,4 +1,4 @@
-const getContacts = state => state.phonebook.items;
+const getContacts = state => state.contacts;
 const getFilter = state => state.phonebook.filter;
 
 const getVisibileContacts = state => {

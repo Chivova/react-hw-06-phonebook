@@ -24,11 +24,11 @@ const isLoadingReducer = createReducer(false, {
 
 const errorReducer = createReducer(null, {
   [fetchContactsError]: (_, { payload }) => payload,
-  [fetchContactsRequest]: (_, _) => null,
+  [fetchContactsRequest]: () => null,
 });
 export default combineReducers({
-  contactsReducer,
-  isLoadingReducer,
-  errorReducer,
+  contacts: contactsReducer,
+  isLoading:isLoadingReducer,
+  error:errorReducer,
   //   filter,
 });
