@@ -1,5 +1,5 @@
 import * as contactActions from './phonebook-actions';
-import * as contactsApi from '../services/contacts-api';
+import * as contactsApi from '../../services/';
 
 const contactsOperations = () => async dispatch => {
   dispatch(contactActions.fetchContactsRequest());
