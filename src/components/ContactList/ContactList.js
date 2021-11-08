@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import { deleteContact } from '../redux/phonebook-actions';
-import { contactsOperations, contactsSelectors } from '../redux/phonebook';
+import { contactsOperations, contactsSelectors } from 'redux/phonebook';
 import s from './ContactList.module.css';
 
 export default function ContactList() {
@@ -10,7 +10,7 @@ export default function ContactList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(contactsOperations());
+    dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
   // const onDeleteContact = id => dispatch(deleteContact(id));
 

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import phonebookReducer from './phonebook-reducer.js';
+import phonebookReducer from './phonebook/phonebook-reducer';
 
 const store = configureStore({
   reducer: phonebookReducer,

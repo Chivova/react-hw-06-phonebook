@@ -1,7 +1,7 @@
 import * as contactActions from './phonebook-actions';
-import * as contactsApi from '../../services/';
+import * as contactsApi from 'services/contacts-api';
 
-const contactsOperations = () => async dispatch => {
+const fetchContacts = () => async dispatch => {
   dispatch(contactActions.fetchContactsRequest());
 
   try {
@@ -12,4 +12,4 @@ const contactsOperations = () => async dispatch => {
   }
 };
 
-export default contactsOperations;
+export { fetchContacts };

@@ -5,7 +5,7 @@ import s from './Filter.module.css';
 
 export default function Filter() {
   // const value = useSelector(getFilter);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <div className={s.filterWrapp}>
