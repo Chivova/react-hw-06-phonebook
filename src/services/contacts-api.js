@@ -1,3 +1,4 @@
+import axios from 'axios';
 const BASE_URL = 'http://localhost:3004';
 
 async function fetchContacts() {
@@ -8,7 +9,14 @@ async function fetchContacts() {
   return data;
 }
 
-// import axios from 'axios';
+// async function addContact(name, number) {
+//   const data = await fetch(`${BASE_URL}/contacts`, {
+//     method: 'POST',
+//     name,
+//     number,
+//   });
+//   return data;
+// }
 
 // const BASE_URL = 'http://localhost:3004/contacts';
 
@@ -17,4 +25,11 @@ async function fetchContacts() {
 //   return data;
 // }
 
-export { fetchContacts };
+async function addContact(name, number) {
+  const data = await axios.post(`${BASE_URL}`, {
+    name,
+    number,
+  });
+  return data;
+}
+export { fetchContacts, addContact };
