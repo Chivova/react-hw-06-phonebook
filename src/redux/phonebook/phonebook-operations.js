@@ -1,5 +1,6 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import * as contactsApi from 'services/contacts-api';
+import shortid from 'shortid';
 // import * as contactActions from './phonebook-actions';
 
 const fetchContacts = createAsyncThunk(
@@ -14,18 +15,30 @@ const fetchContacts = createAsyncThunk(
   },
 );
 
-const addContact = createAsyncThunk(
-  'contacts/addContact',
+const postContact = createAsyncThunk(
+  'contacts/postContact',
   async ({ name, number }, { rejectWithValue }) => {
     try {
-      const response = await contactsApi.addContact(name, number);
+      const response = await contactsApi.postContact(name, number);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
     }
   },
 );
-export { fetchContacts, addContact };
+
+const addContact = createAction(
+  'contactsList/addContact',
+  ({ name, number }) => ({
+    payload: {
+      id: shortid.generate(),
+      name: name,
+      number: number,
+    },
+  }),
+);
+
+export { fetchContacts, postContact, addContact };
 
 // const fetchContacts = () => async dispatch => {
 //   dispatch(contactActions.fetchContactsRequest());

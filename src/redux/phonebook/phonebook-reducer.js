@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import { fetchContacts } from './phonebook-operations';
-import { addContact } from 'services/contacts-api';
+import { fetchContacts, addContact, postContact } from './phonebook-operations';
 
 const contactsReducer = createReducer([], {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
-  [addContact.fulfilled]: (state, { payload }) => [...state, { payload }],
+  [addContact]: (state, { payload }) => [...state, { payload }],
+  [postContact.fulfilled]: () => {},
   //   [deleteContact]: (state, { payload }) =>
   //     state.filter(contact => contact.id !== payload),
 });

@@ -25,11 +25,11 @@ async function fetchContacts() {
 //   return data;
 // }
 
-async function addContact(name, number) {
+async function postContact(name, number) {
   const data = await axios.post(`${BASE_URL}`, {
     name,
     number,
   });
   return data;
 }
-export { fetchContacts, addContact };
+export { fetchContacts, postContact };
