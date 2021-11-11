@@ -5,7 +5,7 @@ import { fetchContacts, addContact, postContact } from './phonebook-operations';
 const contactsReducer = createReducer([], {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
   // [addContact]: (state, { payload }) => [...state, { payload }],
-  [postContact.fulfilled]: (state, { payload }) => [...state, { payload }],
+  [postContact.fulfilled]: (state, { payload }) => [...state, payload],
   //   [deleteContact]: (state, { payload }) =>
   //     state.filter(contact => contact.id !== payload),
 });

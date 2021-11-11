@@ -17,7 +17,7 @@ const fetchContacts = createAsyncThunk(
 
 const postContact = createAsyncThunk(
   'contacts/postContact',
-  async ( name, number , { rejectWithValue }) => {
+  async ({ name, number }, { rejectWithValue }) => {
     try {
       const response = await contactsApi.postContact(name, number);
       return response;

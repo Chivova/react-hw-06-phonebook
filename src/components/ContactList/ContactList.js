@@ -8,7 +8,7 @@ import s from './ContactList.module.css';
 export default function ContactList() {
   const contacts = useSelector(contactsSelectors.getContacts);
   const dispatch = useDispatch();
-
+  console.log(contacts);
   useEffect(() => {
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
