@@ -17,7 +17,7 @@ const fetchContacts = createAsyncThunk(
 
 const postContact = createAsyncThunk(
   'contacts/postContact',
-  async ({ name, number }, { rejectWithValue }) => {
+  async ( name, number , { rejectWithValue }) => {
     try {
       const response = await contactsApi.postContact(name, number);
       return response;
@@ -27,18 +27,18 @@ const postContact = createAsyncThunk(
   },
 );
 
-const addContact = createAction(
-  'contactsList/addContact',
-  ({ name, number }) => ({
-    payload: {
-      id: shortid.generate(),
-      name: name,
-      number: number,
-    },
-  }),
-);
+// const addContact = createAction(
+//   'contactsList/addContact',
+//   ({ name, number }) => ({
+//     payload: {
+//       id: shortid.generate(),
+//       name: name,
+//       number: number,
+//     },
+//   }),
+// );
 
-export { fetchContacts, postContact, addContact };
+export { fetchContacts, postContact };
 
 // const fetchContacts = () => async dispatch => {
 //   dispatch(contactActions.fetchContactsRequest());

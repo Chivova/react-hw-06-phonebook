@@ -1,4 +1,6 @@
-import axios from 'axios';
+import shortid from 'shortid';
+
+// import axios from 'axios';
 const BASE_URL = 'http://localhost:3004';
 
 async function fetchContacts() {
@@ -9,27 +11,33 @@ async function fetchContacts() {
   return data;
 }
 
-// async function addContact(name, number) {
-//   const data = await fetch(`${BASE_URL}/contacts`, {
-//     method: 'POST',
-//     name,
-//     number,
-//   });
-//   return data;
-// }
-
-// const BASE_URL = 'http://localhost:3004/contacts';
+async function postContact(name, number) {
+  const contact = {
+    id: shortid(),
+    name,
+    number,
+  };
+  console.log(contact);
+  const data = await fetch(`${BASE_URL}/contacts`, {
+    method: 'POST',
+    body: JSON.stringify(contact),
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+  });
+  return data;
+}
 
 // async function fetchContacts() {
 //   const { data } = await axios.get(`${BASE_URL}`);
 //   return data;
 // }
 
-async function postContact(name, number) {
-  const data = await axios.post(`${BASE_URL}`, {
-    name,
-    number,
-  });
-  return data;
-}
+// async function postContact(name, number) {
+//   const data = await axios.post(`${BASE_URL}`, {
+//     name,
+//     number,
+//   });
+//   return data;
+// }
 export { fetchContacts, postContact };

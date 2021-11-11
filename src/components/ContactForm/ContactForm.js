@@ -42,10 +42,10 @@ export default function ContactForm() {
       return alert(`Number ${number} is already in contacts `);
     }
 
-    dispatch(
-      contactsOperations.addContact({ name: setName, number: setNumber }),
-    );
-
+    // dispatch(
+    //   contactsOperations.addContact({ name: setName, number: setNumber }),
+    // );
+    dispatch(contactsOperations.postContact(name, number));
     reset();
   };
 
