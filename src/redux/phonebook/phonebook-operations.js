@@ -26,6 +26,18 @@ const postContact = createAsyncThunk(
   },
 );
 
+const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await contactsApi.deleteContact(id);
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
 // const addContact = createAction(
 //   'contactsList/addContact',
 //   ({ name, number }) => ({
@@ -37,7 +49,7 @@ const postContact = createAsyncThunk(
 //   }),
 // );
 
-export { fetchContacts, postContact };
+export { fetchContacts, postContact, deleteContact };
 
 // const fetchContacts = () => async dispatch => {
 //   dispatch(contactActions.fetchContactsRequest());

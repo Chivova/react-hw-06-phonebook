@@ -29,7 +29,7 @@ async function postContact(name, number) {
 }
 
 async function deleteContact(id) {
-  const contact = await fetch(`${BASE_URL}/contacts`, {
+  const contactId = await fetch(`${BASE_URL}/contacts/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -37,12 +37,11 @@ async function deleteContact(id) {
     body: JSON.stringify(id),
   })
     .then(response => response.json())
-    .then(contact => contact);
-  console.log(contact);
-  return contact;
+    .then(contactId => contactId);
+  console.log(contactId);
+  return contactId;
 }
 export { fetchContacts, postContact, deleteContact };
-
 // Через AXIOS
 // async function fetchContacts() {
 //   const { data } = await axios.get(`${BASE_URL}`);
@@ -56,4 +55,9 @@ export { fetchContacts, postContact, deleteContact };
 //     number,
 //   });
 //   return data;
+// }
+// async function deleteContact(id) {
+//   await axios.delete(`${BASE_URL}/contacts/${id}`);
+//   console.log(id);
+//   return id;
 // }

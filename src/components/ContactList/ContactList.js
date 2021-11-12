@@ -12,6 +12,7 @@ export default function ContactList() {
   useEffect(() => {
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
+
   const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
 
   return (
