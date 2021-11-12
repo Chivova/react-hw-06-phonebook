@@ -31,20 +31,17 @@ export default function ContactForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // if (
-    //   contacts.find(
-    //     contact =>
-    //       contact.name.toLocaleLowerCase() === name.toLocaleLowerCase(),
-    //   )
-    // ) {
-    //   return alert(`Name ${name} is already in contacts `);
-    // } else if (contacts.find(contact => contact.number === number)) {
-    //   return alert(`Number ${number} is already in contacts `);
-    // }
+    if (
+      contacts.find(
+        contact =>
+          contact.name.toLocaleLowerCase() === name.toLocaleLowerCase(),
+      )
+    ) {
+      return alert(`Name ${name} is already in contacts `);
+    } else if (contacts.find(contact => contact.number === number)) {
+      return alert(`Number ${number} is already in contacts `);
+    }
 
-    // dispatch(
-    //   contactsOperations.addContact({ name: setName, number: setNumber }),
-    // );
     dispatch(contactsOperations.postContact({ name, number }));
     reset();
   };

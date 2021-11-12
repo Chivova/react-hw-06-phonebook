@@ -1,6 +1,5 @@
-import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as contactsApi from 'services/contacts-api';
-import shortid from 'shortid';
 // import * as contactActions from './phonebook-actions';
 
 const fetchContacts = createAsyncThunk(

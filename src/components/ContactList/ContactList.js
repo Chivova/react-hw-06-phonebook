@@ -8,11 +8,11 @@ import s from './ContactList.module.css';
 export default function ContactList() {
   const contacts = useSelector(contactsSelectors.getContacts);
   const dispatch = useDispatch();
-  console.log(contacts);
+
   useEffect(() => {
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
-  // const onDeleteContact = id => dispatch(deleteContact(id));
+  const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
 
   return (
     <ul className={s.contactsList}>
@@ -21,7 +21,7 @@ export default function ContactList() {
           {name}: {number}
           <button
             className={s.contactsBtn}
-            // onClick={() => onDeleteContact(id)}
+            onClick={() => onDeleteContact(id)}
             type="button"
           >
             X
