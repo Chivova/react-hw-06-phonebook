@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
 import * as contactsApi from 'services/contacts-api';
 // import * as contactActions from './phonebook-actions';
 
@@ -38,6 +38,10 @@ const deleteContact = createAsyncThunk(
   },
 );
 
+const filterContacts = createAction('contacts/felterContacts');
+
+export { fetchContacts, postContact, deleteContact, filterContacts };
+
 // const addContact = createAction(
 //   'contactsList/addContact',
 //   ({ name, number }) => ({
@@ -48,8 +52,6 @@ const deleteContact = createAsyncThunk(
 //     },
 //   }),
 // );
-
-export { fetchContacts, postContact, deleteContact };
 
 // const fetchContacts = () => async dispatch => {
 //   dispatch(contactActions.fetchContactsRequest());

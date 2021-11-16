@@ -29,12 +29,12 @@ async function postContact(name, number) {
 }
 
 async function deleteContact(id) {
-  const contactId = await fetch(`${BASE_URL}/contacts/${id}`, {
+  const contactId = await fetch(`${BASE_URL}/contacts`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(id),
+    body: id,
   })
     .then(response => response.json())
     .then(contactId => contactId);
