@@ -26,11 +26,11 @@ const postContact = createAsyncThunk(
   },
 );
 
-const deleteContact = createAsyncThunk(
+const fetchDeleteContact = createAsyncThunk(
   'contacts/deleteContact',
   async (id, { rejectWithValue }) => {
     try {
-      const response = await contactsApi.deleteContact(id);
+      const response = await contactsApi.fetchDeleteContact(id);
       return response;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -38,9 +38,16 @@ const deleteContact = createAsyncThunk(
   },
 );
 
-const filterContacts = createAction('contacts/felterContacts');
+// const deleteContact = createAction('contacts/deleteContact');
+const filterContacts = createAction('contacts/filterContacts');
 
-export { fetchContacts, postContact, deleteContact, filterContacts };
+export {
+  fetchContacts,
+  postContact,
+  fetchDeleteContact,
+  filterContacts,
+  // deleteContact,
+};
 
 // const addContact = createAction(
 //   'contactsList/addContact',

@@ -3,15 +3,19 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   fetchContacts,
   postContact,
-  deleteContact,
+  fetchDeleteContact,
   filterContacts,
 } from './phonebook-operations';
 
 const contactsReducer = createReducer([], {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
   [postContact.fulfilled]: (state, { payload }) => [...state, payload],
-  [deleteContact.fulfilled]: (state, { payload }) =>
+  [fetchDeleteContact.fulfilled]: (state, { payload }) =>
     state.filter(contact => contact.id !== payload),
+});
+
+const filterReducer = createReducer('', {
+  [filterContacts]: (_, { payload }) => payload,
 });
 
 const isLoadingReducer = createReducer(false, {
@@ -23,12 +27,9 @@ const isLoadingReducer = createReducer(false, {
   [postContact.fulfilled]: () => false,
   [postContact.rejected]: () => false,
 
-  [deleteContact.pending]: () => true,
-  [deleteContact.fulfilled]: () => false,
-  [deleteContact.rejected]: () => false,
-});
-const filterReducer = createReducer('', {
-  [filterContacts]: (_, { payload }) => payload,
+  [fetchDeleteContact.pending]: () => true,
+  [fetchDeleteContact.fulfilled]: () => false,
+  [fetchDeleteContact.rejected]: () => false,
 });
 
 const errorReducer = createReducer(null, {

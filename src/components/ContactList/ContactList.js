@@ -1,19 +1,24 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-// import { deleteContact } from '../redux/phonebook-actions';
 import { contactsOperations, contactsSelectors } from 'redux/phonebook';
 import s from './ContactList.module.css';
 
 export default function ContactList() {
-  const contacts = useSelector(contactsSelectors.getContacts);
+  const contacts = useSelector(contactsSelectors.getVisibileContacts);
   const dispatch = useDispatch();
+
+  const onDeleteContact = id =>
+    dispatch(contactsOperations.fetchDeleteContact(id));
+
+  // async function onDeleteContact(id) {
+  //   dispatch(contactsOperations.onDeleteContact(id));
+  //   await dispatch(contactsOperations.fetchDeleteContact(id));
+  // }
 
   useEffect(() => {
     dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
-
-  const onDeleteContact = id => dispatch(contactsOperations.deleteContact(id));
 
   return (
     <ul className={s.contactsList}>

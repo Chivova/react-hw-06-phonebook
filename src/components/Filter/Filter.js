@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsOperations } from 'redux/phonebook';
-import { contactsSelectors } from 'redux/phonebook-selectors';
+import { contactsSelectors } from 'redux/phonebook';
 import s from './Filter.module.css';
 
 export default function Filter() {
@@ -17,7 +17,7 @@ export default function Filter() {
           type="text"
           value={value}
           onChange={e =>
-            dispatch(contactsOperations.filterContact(e.target.value))
+            dispatch(contactsOperations.filterContacts(e.target.value))
           }
         />
       </label>
