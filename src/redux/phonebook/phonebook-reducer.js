@@ -40,6 +40,7 @@ const errorReducer = createReducer(null, {
   [fetchContacts.rejected]: (_, { payload }) => payload,
   [fetchContacts.pending]: () => null,
 });
+
 export default combineReducers({
   contacts: contactsReducer,
   isLoading: isLoadingReducer,

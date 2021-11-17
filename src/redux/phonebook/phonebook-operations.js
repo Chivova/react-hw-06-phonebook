@@ -38,16 +38,9 @@ const fetchDeleteContact = createAsyncThunk(
   },
 );
 
-// const deleteContact = createAction('contacts/deleteContact');
 const filterContacts = createAction('contacts/filterContacts');
 
-export {
-  fetchContacts,
-  postContact,
-  fetchDeleteContact,
-  filterContacts,
-  // deleteContact,
-};
+export { fetchContacts, postContact, fetchDeleteContact, filterContacts };
 
 // const addContact = createAction(
 //   'contactsList/addContact',
