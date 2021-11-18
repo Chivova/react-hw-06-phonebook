@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelectors, contactsOperations } from 'redux/phonebook';
-// import { NotificationManager } from 'react-notifications';
+import { toast } from 'react-hot-toast';
+// import {
+//   NotificationContainer,
+//   NotificationManager,
+// } from 'react-notifications';
 // import { addContact } from '../redux/phonebook-actions';
 import 'react-notifications/lib/notifications.css';
 import s from './ContactForm.module.css';
@@ -39,16 +43,27 @@ export default function ContactForm() {
           contact.name.toLocaleLowerCase() === name.toLocaleLowerCase(),
       )
     ) {
-      //  NotificationManager.warning(
-      //    'Warning message',
-      //    'Close after 3000ms',
-      //    3000,
-      //  );
-      return alert(`Name ${name} is already in contacts `);
+      return toast.error(`Contact ${name} is already in contacts `);
+      // return NotificationManager.warning(
+      //   `Name ${name} is already in contacts `,
+      //   'Warning',
+      //   3000,
+      // );
     } else if (contacts.find(contact => contact.number === number)) {
-      return alert(`Number ${number} is already in contacts `);
+      return toast.error(`Number ${number} is already in contacts `);
+      // return NotificationManager.warning(
+      //   `Number ${number} is already in contacts `,
+      //   'Warning',
+      //   3000,
+      // );
     }
 
+    // NotificationManager.success(
+    //   `Contact ${name} added successfully `,
+    //   'Success',
+    //   2000,
+    // );
+    toast.success(`Contact ${name} added successfully `);
     dispatch(contactsOperations.postContact({ name, number }));
     reset();
   };
@@ -90,6 +105,7 @@ export default function ContactForm() {
       <button className={s.formBtn} type="submit">
         Add contact
       </button>
+      {/* <NotificationContainer /> */}
     </form>
   );
 }
