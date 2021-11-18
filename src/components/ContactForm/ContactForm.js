@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsSelectors, contactsOperations } from 'redux/phonebook';
+// import { NotificationManager } from 'react-notifications';
 // import { addContact } from '../redux/phonebook-actions';
+import 'react-notifications/lib/notifications.css';
 import s from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -37,6 +39,11 @@ export default function ContactForm() {
           contact.name.toLocaleLowerCase() === name.toLocaleLowerCase(),
       )
     ) {
+      //  NotificationManager.warning(
+      //    'Warning message',
+      //    'Close after 3000ms',
+      //    3000,
+      //  );
       return alert(`Name ${name} is already in contacts `);
     } else if (contacts.find(contact => contact.number === number)) {
       return alert(`Number ${number} is already in contacts `);
